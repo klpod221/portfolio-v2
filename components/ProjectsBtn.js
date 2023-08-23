@@ -8,7 +8,7 @@ const ProjectsBtn = () => {
     <div title="My Projects" className="mx-auto xl:mx-0">
       <Link href={"/work"} className="relative w-[185px] flex justify-center items-center bg-circleStar bg-cover bg-center bg-no-repeat group">
         <Image
-          src={'/rounded-text.png'}
+          src={"/images/rounded-text.png"}
           alt="projects"
           width={141}
           height={148}

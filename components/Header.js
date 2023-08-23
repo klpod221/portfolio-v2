@@ -10,10 +10,9 @@ const Header = () => {
         <div className="flex flex-col lg:flex-row justify-between items-center gap-y-6 py-8">
           {/* logo */}
           <Link href={"/"}>
-            
             <Image
-              src={"/logo.svg"}
-              width={220}
+              src={"/images/logo.svg"}
+              width={275}
               height={48}
               alt="logo"
               priority={true}
