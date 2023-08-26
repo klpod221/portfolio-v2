@@ -49,3 +49,18 @@
     @apply w-full h-[180px] p-6 capitalize rounded-lg resize-none;
   }
 }
+
+.home-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blob {
+  width: 25rem;
+  fill: #fff;
+}
+
+.blob-img {
+  width: 13rem;
+}

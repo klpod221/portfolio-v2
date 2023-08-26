@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CountUp from "react-countup";
+import Typed from "react-typed";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../utils/animations";
 
@@ -7,17 +8,30 @@ import { fadeIn } from "../../utils/animations";
 import {
   FaHtml5,
   FaCss3,
-  FaJs,
   FaReact,
   FaWordpress,
-  FaFigma,
+  FaLaravel,
+  FaNodeJs,
 } from "react-icons/fa";
 
 import {
-  SiNextdotjs,
-  SiFramer,
-  SiAdobexd,
-  SiAdobephotoshop,
+  SiPhp,
+  SiVuedotjs,
+  SiAngularjs,
+  SiMysql,
+  SiMariadb,
+  SiPostgresql,
+  SiMongodb,
+  SiRedis,
+  SiFirebase,
+  SiLinux,
+  SiNginx,
+  SiApache,
+  SiAmazonaws,
+  SiDocker,
+  SiJenkins,
+  SiCircleci,
+  SiCloudflare,
 } from "react-icons/si";
 
 // components
@@ -32,35 +46,109 @@ const aboutData = [
       {
         title: "Web Development",
         icons: [
-          <FaHtml5 key={1} />,
-          <FaCss3 key={2} />,
-          <FaJs key={3} />,
-          <FaReact key={4} />,
-          <SiNextdotjs key={5} />,
-          <SiFramer key={6} />,
-          <FaWordpress key={7} />,
+          {
+            component: <FaHtml5 />,
+            title: "HTML",
+          },
+          {
+            component: <FaCss3 />,
+            title: "CSS",
+          },
+          {
+            component: <FaNodeJs />,
+            title: "NodeJS",
+          },
+          {
+            component: <SiPhp />,
+            title: "PHP",
+          },
+          {
+            component: <FaReact />,
+            title: "ReactJS",
+          },
+          {
+            component: <SiVuedotjs />,
+            title: "NuxtJS/VueJS",
+          },
+          {
+            component: <SiAngularjs />,
+            title: "AngularJS",
+          },
+          {
+            component: <FaWordpress />,
+            title: "Wordpress",
+          },
+          {
+            component: <FaLaravel />,
+            title: "Laravel",
+          },
         ],
       },
       {
-        title: "UI/UX Design",
+        title: "Database Management",
         icons: [
-          <FaFigma key={1} />,
-          <SiAdobexd key={2} />,
-          <SiAdobephotoshop key={4} />,
+          {
+            component: <SiMysql />,
+            title: "MySQL",
+          },
+          {
+            component: <SiMariadb />,
+            title: "MariaDB",
+          },
+          {
+            component: <SiPostgresql />,
+            title: "PostgreSQL",
+          },
+          {
+            component: <SiMongodb />,
+            title: "MongoDB",
+          },
+          {
+            component: <SiRedis />,
+            title: "Redis",
+          },
+          {
+            component: <SiFirebase />,
+            title: "Firebase",
+          },
         ],
       },
-    ],
-  },
-  {
-    title: "awards",
-    info: [
       {
-        title: "Webby Awards - Honoree",
-        stage: "2011 - 2012",
-      },
-      {
-        title: "Adobe Design Achievement Awards - Finalist",
-        stage: "2009 - 2010",
+        title: "System Administration & DevOps",
+        icons: [
+          {
+            component: <SiLinux />,
+            title: "Linux",
+          },
+          {
+            component: <SiNginx />,
+            title: "Nginx",
+          },
+          {
+            component: <SiApache />,
+            title: "Apache",
+          },
+          {
+            component: <SiAmazonaws />,
+            title: "AWS",
+          },
+          {
+            component: <SiDocker />,
+            title: "Docker",
+          },
+          {
+            component: <SiJenkins />,
+            title: "Jenkins",
+          },
+          {
+            component: <SiCircleci />,
+            title: "CircleCI",
+          },
+          {
+            component: <SiCloudflare />,
+            title: "Cloudflare",
+          },
+        ],
       },
     ],
   },
@@ -68,16 +156,12 @@ const aboutData = [
     title: "experience",
     info: [
       {
-        title: "UX/UI Designer - XYZ Company",
-        stage: "2012 - 2023",
+        title: "Web Developer & Linux System Administrator - Hachinet Software",
+        stage: "2022 - now",
       },
       {
-        title: "Web Developer - ABC Agency",
-        stage: "2010 - 2012",
-      },
-      {
-        title: "Intern - DEF Corporation",
-        stage: "2008 - 2010",
+        title: "Web Developer - FPT Telecom",
+        stage: "2021 - 2022",
       },
     ],
   },
@@ -85,16 +169,8 @@ const aboutData = [
     title: "credentials",
     info: [
       {
-        title: "Web Development - ABC University, LA, CA",
-        stage: "2011",
-      },
-      {
-        title: "Computer Science Diploma - AV Technical Institute",
-        stage: "2009",
-      },
-      {
-        title: "Certified Graphic Designer - ABC Institute, Los Angeles, CA",
-        stage: "2006",
+        title: "Software Engineering - BKACAD Academy",
+        stage: "2019 - 2022",
       },
     ],
   },
@@ -119,30 +195,52 @@ const About = () => {
 
       <div className="container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6">
         {/* text */}
-        <div className="flex-1 flex flex-col justify-center">
+        <div className="flex-1 flex flex-col h-fit md:h-[480px]">
           <motion.h2
             variants={fadeIn("right", 0.2)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="h2"
+            className="h2 mb-0"
           >
-            I&#39;m a <span className="text-accent">full-stack</span> developer.
+            I&#39;m a klpod221 <span className="text-accent">.</span>
           </motion.h2>
-          <motion.p
+
+          <motion.h3
             variants={fadeIn("right", 0.4)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="h3 text-xl md:text-3xl xl:text-4xl text-accent mb-5"
+          >
+            <Typed
+              strings={[
+                "Full-Stack Developer",
+                "Linux System Administrator",
+                "DevOps Engineer",
+              ]}
+              typeSpeed={40}
+              backSpeed={50}
+              typeDelay={1000}
+              loop
+            />
+          </motion.h3>
+
+          <motion.p
+            variants={fadeIn("right", 0.6)}
             initial="hidden"
             animate="show"
             exit="hidden"
             className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-10"
           >
-            I have a passion for web development and love to create for web and
-            mobile devices.
+            I can help you build your product from scratch or develop your
+            existing product further, build and manage Linux web servers, and
+            automate your development process.
           </motion.p>
 
           {/* counters */}
           <motion.div
-            variants={fadeIn("right", 0.6)}
+            variants={fadeIn("right", 0.8)}
             initial="hidden"
             animate="show"
             exit="hidden"
@@ -162,7 +260,7 @@ const About = () => {
               {/* clients */}
               <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
                 <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                  <CountUp start={0} end={100} duration={5} /> +
+                  <CountUp start={0} end={50} duration={5} /> +
                 </div>
                 <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
                   happy clients
@@ -172,20 +270,10 @@ const About = () => {
               {/* projects */}
               <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
                 <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                  <CountUp start={0} end={200} duration={5} /> +
+                  <CountUp start={0} end={90} duration={5} /> +
                 </div>
                 <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
                   projects completed
-                </div>
-              </div>
-
-              {/* awards */}
-              <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
-                <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                  <CountUp start={0} end={10} duration={5} /> +
-                </div>
-                <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                  awards won
                 </div>
               </div>
             </div>
@@ -207,8 +295,8 @@ const About = () => {
                   key={itemIndex}
                   className={`${
                     index === itemIndex &&
-                    "text-accent after:w-{100%} after:bg-accent after:transition-all after:duration-300"
-                  } cursor-pointer capitalize xl:text-lg relative after:w-8 after:h-[2px] after:bg-white after:absolute after:-bottom-1 after:left-0`}
+                    "text-accent after:w-full after:bg-accent"
+                  } cursor-pointer capitalize xl:text-lg relative after:w-8 after:h-[2px] after:bg-white after:absolute after:-bottom-1 after:left-0 hover:text-accent hover:after:w-full hover:after:bg-accent hover:after:transition-all hover:after:duration-300`}
                   onClick={() => setIndex(itemIndex)}
                 >
                   {item.title}
@@ -221,22 +309,25 @@ const About = () => {
               return (
                 <div
                   key={itemIndex}
-                  className="flex-1 flex flex-col md:flex-row max-w-max gap-x-2 items-center text-white/60"
+                  className="flex-1 flex flex-col max-w-max gap-x-2 text-white/60"
                 >
                   {/* title */}
-                  <div className="font-light mb-2 md:mb-0">{item.title}</div>
-                  <div className="hidden md:flex">-</div>
+                  <div className="font-light mb-2">{item.title}</div>
 
                   {/* stage */}
                   <div>{item.stage}</div>
 
                   {/* icons */}
-                  <div className="flex gap-x-4">
+                  <div className="flex gap-4 flex-wrap justify-center sm:justify-start mb-4">
                     {item.icons &&
                       item.icons.map((icon, iconIndex) => {
                         return (
-                          <div className="text-2xl text-white" key={iconIndex}>
-                            {icon}
+                          <div
+                            className="text-2xl text-white"
+                            title={icon.title}
+                            key={iconIndex}
+                          >
+                            {icon.component}
                           </div>
                         );
                       })}

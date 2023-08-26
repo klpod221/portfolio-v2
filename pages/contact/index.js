@@ -3,11 +3,14 @@ import { fadeIn } from "../../utils/animations";
 
 import { BsArrowRight } from "react-icons/bs";
 
+import Bulb from "../../components/Bulb";
 import Circles from "../../components/Circles";
 
 const Contact = () => {
   return (
     <div className="h-full bg-primary/30">
+      <Circles />
+
       <div className="container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full">
         <div className="flex flex-col w-full max-w-[700px]">
           {/* title */}
@@ -16,14 +19,24 @@ const Contact = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="h2 text-center mb-12"
+            className="h2 text-center"
           >
             Let&#39;s <span className="text-accent">connect.</span>
           </motion.h2>
 
+          <motion.p
+            variants={fadeIn("up", 0.4)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="text-center mb-4"
+          >
+            Contact me if you want to work together or just want to say hi.
+          </motion.p>
+
           {/* form */}
           <motion.form
-            variants={fadeIn("up", 0.4)}
+            variants={fadeIn("up", 0.6)}
             initial="hidden"
             animate="show"
             exit="hidden"
@@ -48,6 +61,8 @@ const Contact = () => {
           </motion.form>
         </div>
       </div>
+
+      <Bulb />
     </div>
   );
 };

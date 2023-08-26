@@ -1,6 +1,7 @@
 import { fadeIn } from "../utils/animations";
 
 import { motion } from "framer-motion";
+import Typed from 'react-typed';
 
 import ParticlesContainer from "../components/ParticlesContainer";
 import ProjectsBtn from "../components/ProjectsBtn";
@@ -11,7 +12,7 @@ const Home = () => {
     <div className="bg-primary/60 h-full">
       {/* text */}
       <div className="w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10">
-        <div className="text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto">
+        <div className="text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto relative z-10">
           {/* title */}
           <motion.h1
             variants={fadeIn("down", 0.2)}
@@ -21,7 +22,21 @@ const Home = () => {
             className="h1"
           >
             Transforming Ideas <br /> Into{" "}
-            <span className="text-accent">Digital Reality</span>
+
+            <Typed
+              strings={[
+                "Reality",
+                "Code",
+                "Products",
+                "Solutions",
+              ]}
+              typeSpeed={40}
+              backSpeed={50}
+              typeDelay={1000}
+              loop
+            >
+              <span className="text-accent">Digital Reality</span>
+            </Typed>
           </motion.h1>
 
           {/* subtitle */}
@@ -37,7 +52,7 @@ const Home = () => {
           </motion.p>
 
           {/* button */}
-          <div className="flex justify-center xl:hidden relative z-10">
+          <div className="flex justify-center xl:hidden relative">
             <ProjectsBtn />
           </div>
           <motion.div

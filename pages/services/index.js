@@ -30,7 +30,7 @@ const Services = () => {
               className="mb-4 max-w-[400px] mx-auto lg:mx-0"
             >
               I offer a wide range of digital services. I can help you with
-              anything from a simple website to a complex web application.
+              anything from a simple website to a complex web application and a lot more.
             </motion.p>
           </div>
 

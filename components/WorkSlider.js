@@ -55,7 +55,7 @@ const WorkSlider = () => {
       modules={[Pagination, Autoplay]}
       pagination={{ clickable: true }}
       autoplay={{ delay: 3000 }}
-      className="h-[340px] sm:h-[480px]"
+      className="h-[280px] sm:h-[480px]"
     >
       {workSlides.map((slide, slideIndex) => {
         return (

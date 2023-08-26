@@ -29,8 +29,8 @@ const Work = () => {
               exit="hidden"
               className="mb-4 max-w-[400px] mx-auto lg:mx-0"
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-              voluptatum, quibusdam, quia, voluptate quod quos dolorum
+              Here are some of my recent public projects. I&#39;m always looking for new
+              challenges and opportunities to learn something new.
             </motion.p>
           </div>
 
