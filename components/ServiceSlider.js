@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 
@@ -6,21 +7,11 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
 // icons
-import {
-  RxDesktop,
-  RxRocket,
-  RxArrowTopRight,
-} from "react-icons/rx";
+import { RxDesktop, RxRocket, RxArrowTopRight } from "react-icons/rx";
 
-import {
-  RiAdminLine,
-  RiUploadCloud2Line
-} from "react-icons/ri";
+import { RiAdminLine, RiUploadCloud2Line } from "react-icons/ri";
 
-import {
-  TbSettingsAutomation
-} from "react-icons/tb";
-
+import { TbSettingsAutomation } from "react-icons/tb";
 
 // data
 const serviceData = [
@@ -48,7 +39,7 @@ const serviceData = [
     icon: <RiUploadCloud2Line />,
     title: "Cloud Computing",
     description: "Deploy your website to the cloud to make it more scalable.",
-  }
+  },
 ];
 
 const swiperBreakpoints = {
@@ -75,7 +66,11 @@ const ServiceSlider = () => {
       {serviceData.map((item, index) => {
         return (
           <SwiperSlide key={index}>
-            <div className="relative bg-[#412f7b26] h-[180px] sm:h-[240px] md:h-[262px] xl:h-[280px] rounded-lg px-6 py-8 sm:p-3 md:px-6 md:py-8 flex sm:flex-col gap-x-6 sm:gap-x-0 group cursor-pointer hover:bg-[#5941a926] transition-all duration-300">
+            <Link
+              title="Contact me"
+              href={"/contact?service=" + item.title}
+              className="relative bg-[#412f7b26] h-[180px] sm:h-[240px] md:h-[262px] xl:h-[280px] rounded-lg px-6 py-8 sm:p-3 md:px-6 md:py-8 flex sm:flex-col gap-x-6 sm:gap-x-0 group cursor-pointer hover:bg-[#5941a926] transition-all duration-300"
+            >
               {/* icon */}
               <div className="text-4xl text-accent mb-4">{item.icon}</div>
 
@@ -89,9 +84,9 @@ const ServiceSlider = () => {
 
               {/* arrow */}
               <div className="text-3xl sm:absolute bottom-4">
-                <RxArrowTopRight className="group-hover:rotate-45 group-hover:text-accent transition-all duration-300"/>
+                <RxArrowTopRight className="group-hover:rotate-45 group-hover:text-accent transition-all duration-300" />
               </div>
-            </div>
+            </Link>
           </SwiperSlide>
         );
       })}
