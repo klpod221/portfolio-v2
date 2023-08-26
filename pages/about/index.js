@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CountUp from "react-countup";
-import Typed from "react-typed";
+import Typewriter from "typewriter-effect";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../utils/animations";
 
@@ -211,18 +211,19 @@ const About = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="h3 text-xl md:text-3xl xl:text-4xl text-accent mb-5"
+            className="font-semibold text-xl md:text-3xl xl:text-4xl mb-5"
           >
-            <Typed
-              strings={[
-                "Full-Stack Developer",
-                "Linux System Administrator",
-                "DevOps Engineer",
-              ]}
-              typeSpeed={40}
-              backSpeed={50}
-              typeDelay={1000}
-              loop
+            <Typewriter
+              options={{
+                strings: [
+                  "Full-Stack Developer",
+                  "Linux System Administrator",
+                  "DevOps Engineer",
+                ],
+                autoStart: true,
+                loop: true,
+                wrapperClassName: "text-accent bg-white/50 rounded px-1",
+              }}
             />
           </motion.h3>
 

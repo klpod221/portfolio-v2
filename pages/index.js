@@ -1,7 +1,7 @@
 import { fadeIn } from "../utils/animations";
 
 import { motion } from "framer-motion";
-import Typed from 'react-typed';
+import Typewriter from "typewriter-effect";
 
 import ParticlesContainer from "../components/ParticlesContainer";
 import ProjectsBtn from "../components/ProjectsBtn";
@@ -21,22 +21,18 @@ const Home = () => {
             exit="hidden"
             className="h1"
           >
-            Transforming Ideas <br /> Into{" "}
-
-            <Typed
-              strings={[
-                "Reality",
-                "Code",
-                "Products",
-                "Solutions",
-              ]}
-              typeSpeed={40}
-              backSpeed={50}
-              typeDelay={1000}
-              loop
-            >
-              <span className="text-accent">Digital Reality</span>
-            </Typed>
+            Transforming Ideas <br />
+            <span className="flex gap-2">
+              Into
+              <Typewriter
+                options={{
+                  strings: ["Reality", "Code", "Products", "Solutions"],
+                  autoStart: true,
+                  loop: true,
+                  wrapperClassName: "text-accent bg-white/50 rounded px-1",
+                }}
+              />
+            </span>
           </motion.h1>
 
           {/* subtitle */}
@@ -71,12 +67,12 @@ const Home = () => {
       <div className="w-[1200px] h-full absolute right-0 bottom-0">
         {/* bg image */}
         <div className="bg-none xl:bg-explosion xl:bg-cover xl:bg-right xl:bg-no-repeat w-full h-full absolute mix-blend-color-dodge translate-z-0" />
-        
+
         {/* particles */}
         <div>
           <ParticlesContainer />
         </div>
-        
+
         {/* Avatar */}
         <motion.div
           variants={fadeIn("up", 0.2)}
