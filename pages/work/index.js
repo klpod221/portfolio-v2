@@ -1,11 +1,17 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../utils/animations";
 
 import WorkSlider from "../../components/WorkSlider";
 import Bulb from "../../components/Bulb";
 import Circles from "../../components/Circles";
+import MyModal from "../../components/MyModal";
+
+import { BsArrowRight } from "react-icons/bs";
 
 const Work = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="h-full bg-primary/30 py-36 flex items-center">
       <Circles />
@@ -29,9 +35,25 @@ const Work = () => {
               exit="hidden"
               className="mb-4 max-w-[400px] mx-auto lg:mx-0"
             >
-              Here are some of my recent public projects. I&#39;m always looking for new
-              challenges and opportunities to learn something new.
+              Here are some of my recent public projects. I&#39;m always looking
+              for new challenges and opportunities to learn something new.
             </motion.p>
+
+            {/* See more */}
+            <motion.button
+              variants={fadeIn("up", 0.2)}
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+              onClick={() => setShowModal(true)}
+              className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group"
+            >
+              <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
+                See more
+              </span>
+
+              <BsArrowRight className="-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]" />
+            </motion.button>
           </div>
 
           {/* slider */}
@@ -46,7 +68,13 @@ const Work = () => {
           </motion.div>
         </div>
       </div>
+
       <Bulb />
+
+      {/* modal */}
+      <MyModal show={showModal} onClose={() => setShowModal(false)}>
+
+      </MyModal>
     </div>
   );
 };
