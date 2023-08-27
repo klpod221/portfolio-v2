@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../../utils/animations";
 
 import WorkSlider from "../../components/WorkSlider";
+import ProjectItem from "../../components/ProjectItem";
 import Bulb from "../../components/Bulb";
 import Circles from "../../components/Circles";
 import MyModal from "../../components/MyModal";
@@ -73,7 +74,23 @@ const Work = () => {
 
       {/* modal */}
       <MyModal show={showModal} onClose={() => setShowModal(false)}>
-
+        {/* List Project */}
+        <div className="flex flex-col gap-y-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {[...Array(10)].map((_, index) => {
+              return (
+                <ProjectItem
+                  key={index}
+                  project={{
+                    title: `Project ${index + 1}`,
+                    image: "/images/thumb1.jpg",
+                    url: "",
+                  }}
+                />
+              );
+            })}
+          </div>
+        </div>
       </MyModal>
     </div>
   );
