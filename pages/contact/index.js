@@ -11,7 +11,7 @@ const Contact = () => {
     <div className="h-full bg-primary/30">
       <Circles />
 
-      <div className="container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full">
+      <div className="container mx-auto py-32 text-center flex items-center justify-center h-full">
         <div className="flex flex-col w-full max-w-[700px]">
           {/* title */}
           <motion.h2

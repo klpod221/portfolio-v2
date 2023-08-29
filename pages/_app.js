@@ -21,9 +21,9 @@ function MyApp({ Component, pageProps }) {
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
         <meta name="google" content="notranslate" />
-        <meta name="google-site-verification" content="gB3ANfjfhh226RGrb1Sa9ypEFmhubEQPgTWEnZN7gvU" />
+        <meta name="google-site-verification" content="1nzDcNaPTgJOrPDUsrQomChD5eThl3aWCAd_CMrhJlk" />
         <meta data-n-head="ssr" data-hid="description" name="description" content="klpod221 portfolio" />
-        
+
         <link rel="icon" href="/favicon.png" />
       </Head>
 

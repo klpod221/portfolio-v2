@@ -34,7 +34,7 @@ const Work = () => {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="mb-4 max-w-[400px] mx-auto lg:mx-0"
+              className="mb-4 sm:max-w-[400px] mx-auto lg:mx-0"
             >
               Here are some of my recent public projects. I&#39;m always looking
               for new challenges and opportunities to learn something new.
@@ -47,7 +47,7 @@ const Work = () => {
               animate="show"
               exit="hidden"
               onClick={() => setShowModal(true)}
-              className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group"
+              className="btn hidden rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 sm:flex items-center justify-center overflow-hidden hover:border-accent group"
             >
               <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
                 See more

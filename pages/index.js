@@ -22,7 +22,7 @@ const Home = () => {
             className="h1"
           >
             Transforming Ideas <br />
-            <span className="flex gap-2">
+            <span className="flex gap-2 justify-center xl:justify-start">
               Into
               <Typewriter
                 options={{
