@@ -9,15 +9,15 @@ const AnalogueClock = () => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [time]);
 
   const hours = time.getHours();
   const minutes = time.getMinutes();
   const seconds = time.getSeconds();
 
-  const hoursDegrees = 30 * hours + minutes / 2;
-  const minutesDegrees = 6 * minutes;
-  const secondsDegrees = 6 * seconds;
+  const hoursDegrees = hours * 30 + minutes * 0.5;
+  const minutesDegrees = minutes * 6 + seconds * 0.1;
+  const secondsDegrees = seconds * 6;
 
   const hoursStyle = {
     transform: `rotate(${hoursDegrees}deg)`,
@@ -41,6 +41,8 @@ const AnalogueClock = () => {
           stroke="#fff"
           strokeWidth="2"
         />
+
+        {/* clock hand */}
         <line
           x1="50"
           y1="50"
@@ -49,9 +51,10 @@ const AnalogueClock = () => {
           stroke="#fff"
           strokeWidth="3"
           strokeLinecap="round"
-          className="origin-[50px_50px] transition-transform duration-150 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]"
+          className={`origin-[50px_50px]`}
           style={hoursStyle}
         />
+
         <line
           x1="50"
           y1="50"
@@ -60,9 +63,10 @@ const AnalogueClock = () => {
           stroke="#fff"
           strokeWidth="2"
           strokeLinecap="round"
-          className="origin-[50px_50px] transition-transform duration-150 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]"
+          className={`origin-[50px_50px]`}
           style={minutesStyle}
         />
+
         <line
           x1="50"
           y1="50"
@@ -71,8 +75,17 @@ const AnalogueClock = () => {
           stroke="#fff"
           strokeWidth="1.5"
           strokeLinecap="round"
-          className="origin-[50px_50px] transition-transform duration-150 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]"
+          className={`origin-[50px_50px]`}
           style={secondsStyle}
+        />
+
+        <circle
+          cx="50"
+          cy="50"
+          r="2"
+          fill="#fff"
+          stroke="#fff"
+          strokeWidth="1"
         />
       </svg>
   );

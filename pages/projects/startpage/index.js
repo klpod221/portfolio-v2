@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
+
 import AnalogueClock from "../../../components/startpage/AnalogueClock";
 import RandomBackground from "../../../components/RandomBackground";
 
@@ -51,7 +52,7 @@ const StartPage = () => {
                 <Link
                   href={link.url}
                   key={index}
-                  className="text-white hover:text-accent transition-all duration-300 shadow-md rounded-full"
+                  className="text-white hover:text-accent transition-all duration-300"
                   title={link.name}
                   target="_blank"
                 >
