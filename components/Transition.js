@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+// show the loading while loading the page
 const transitionVariants = {
   initial: {
     x: "100%",
