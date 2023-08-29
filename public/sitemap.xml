@@ -1,32 +1,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://localhost:3000</loc>
+    <loc>https://klpod221.github.io</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/about</loc>
+    <loc>https://klpod221.github.io/about</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/</loc>
+    <loc>https://klpod221.github.io/</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/about</loc>
+    <loc>https://klpod221.github.io/about</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/contact</loc>
+    <loc>https://klpod221.github.io/contact</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/services</loc>
+    <loc>https://klpod221.github.io/services</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/testimonials</loc>
+    <loc>https://klpod221.github.io/testimonials</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/work</loc>
+    <loc>https://klpod221.github.io/work</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/projects</loc>
+    <loc>https://klpod221.github.io/projects</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/projects/weather</loc>
+    <loc>https://klpod221.github.io/projects/weather</loc>
   </url>
 </urlset>
