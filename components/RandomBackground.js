@@ -26,11 +26,11 @@ const RandomBackground = ({ children }) => {
   return (
     <div className="relative w-full h-full bg-black">
       <div
-        className="absolute inset-0 w-full h-full bg-black opacity-80"
+        className="absolute inset-0 w-full h-full opacity-70 z-0"
         style={style}
       />
 
-      {children}
+      <div className="relative z-10 h-full">{children}</div>
     </div>
   );
 };
