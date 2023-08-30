@@ -1,28 +1,27 @@
 import { useState, useEffect } from "react";
 
 const AnalogueClock = () => {
-  const [hoursStyle, setHoursStyle] = useState({});
-  const [minutesStyle, setMinutesStyle] = useState({});
-  const [secondsStyle, setSecondsStyle] = useState({});
+  const [time, setTime] = useState(new Date());
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const time = new Date();
-      const hours = time.getHours();
-      const minutes = time.getMinutes();
-      const seconds = time.getSeconds();
-
-      const hoursDegreesCalc = hours * 30 + minutes * 0.5;
-      const minutesDegreesCalc = minutes * 6 + seconds * 0.1;
-      const secondsDegreesCalc = seconds * 6;
-
-      setHoursStyle({ transform: `rotate(${hoursDegreesCalc}deg)` });
-      setMinutesStyle({ transform: `rotate(${minutesDegreesCalc}deg)` });
-      setSecondsStyle({ transform: `rotate(${secondsDegreesCalc}deg)` });
+      setTime(new Date());
     }, 1000);
 
     return () => clearInterval(interval);
   }, []);
+
+  const secondsStyle = {
+    transform: `rotate(${time.getSeconds() * 6}deg)`
+  };
+
+  const minutesStyle = {
+    transform: `rotate(${(time.getMinutes() + time.getSeconds() / 60) * 6}deg)`
+  };
+
+  const hoursStyle = {
+    transform: `rotate(${(time.getHours() % 12 + time.getMinutes() / 60) * 30}deg)`
+  };
 
   return (
     <svg className="max-w-[15em] w-full h-auto" viewBox="0 0 100 100" filter="drop-shadow(0 0 0.5rem rgba(0,0,0,0.25))">
