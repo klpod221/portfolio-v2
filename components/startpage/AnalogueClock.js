@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 
 const AnalogueClock = () => {
-  const [time, setTime] = useState(new Date());
   const [hoursStyle, setHoursStyle] = useState({});
   const [minutesStyle, setMinutesStyle] = useState({});
   const [secondsStyle, setSecondsStyle] = useState({});
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTime(new Date());
+      const time = new Date();
       const hours = time.getHours();
       const minutes = time.getMinutes();
       const seconds = time.getSeconds();
@@ -23,8 +22,7 @@ const AnalogueClock = () => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [time]);
-
+  }, []);
 
   return (
     <svg className="max-w-[15em] w-full h-auto" viewBox="0 0 100 100" filter="drop-shadow(0 0 0.5rem rgba(0,0,0,0.25))">
