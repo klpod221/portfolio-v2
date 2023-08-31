@@ -35,43 +35,51 @@ export const useWeather = () => {
 
   // detect user geo location
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
+    const getGeoLocation = () => {
+      return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+      });
+    };
+
+    const getWeather = async () => {
+      try {
+        const position = await getGeoLocation();
+        if (!position) return;
         const { latitude, longitude } = position.coords;
 
         const weatherApi = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,weathercode&daily=sunrise,sunset&timezone=Asia/Ho_Chi_Minh&current_weather=true`;
 
-        const getWeather = async () => {
-          const res = await fetch(weatherApi);
-          const data = await res.json();
+        const res = await fetch(weatherApi);
+        const data = await res.json();
 
-          const { current_weather } = data;
-          const { temperature, weathercode } = current_weather;
+        const { current_weather } = data;
+        const { temperature, weathercode } = current_weather;
 
-          // determine day or night
-          const date = new Date();
-          const hour = date.getHours();
-          const isDay = hour > 6 && hour < 18;
+        // determine day or night
+        const date = new Date();
+        const hour = date.getHours();
+        const isDay = hour > 6 && hour < 18;
 
-          // get weather description and image
-          const weather = wmo[weathercode][isDay ? "day" : "night"];
+        // get weather description and image
+        const weather = wmo[weathercode][isDay ? "day" : "night"];
 
-          setWeather({
-            temperature: temperature,
-            ...weather,
-          });
-        };
-
-        // fetch current weather every 5 minutes
-        getWeather();
-
-        const interval = setInterval(() => {
-          getWeather();
-        }, 300000);
-
-        return () => clearInterval(interval);
-      });
+        setWeather({
+          temperature: temperature,
+          ...weather,
+        });
+      } catch (error) {
+        console.error(error);
+      }
     }
+
+    getWeather();
+
+    // refresh weather every 10 minutes
+    const interval = setInterval(() => {
+      getWeather();
+    }, 600000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return { weather };
