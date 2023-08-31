@@ -1,31 +1,63 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import wmo from "../../const/wmo_data";
+import MyModal from "../MyModal";
 
-const Weather = () => {
-  const { weather } = useWeather();
-
-  if (!weather) return null;
-
+const WeatherItem = ({ weatherData, now = false }) => {
   return (
-    <div className="flex items-center">
+    <div className="flex flex-col">
+      {now ? (
+        <span className="text-white text-lg">Now</span>
+      ) : (
+        <span className="text-white text-lg">
+          {new Date(weatherData.time).getHours()}:00
+        </span>
+      )}
+
       <div className="flex items-center">
-        {weather.image && (
+        {weatherData.image && (
           <Image
-            src={weather.image}
-            alt={weather.description}
+            src={weatherData.image}
+            alt={weatherData.description}
             width={50}
             height={50}
           />
         )}
-      </div>
-      <div className="flex flex-col ml-2">
-        <span className="text-white text-sm">{weather.description}</span>
-        <span className="text-white text-sm">
-          {weather.temperature && `${weather.temperature}°C`}
-        </span>
+        <div className="flex flex-col ml-2">
+          <span className="text-white text-lg">{weatherData.description}</span>
+          <span className="text-white text-lg">
+            {weatherData.temperature && `${weatherData.temperature}°C`}
+          </span>
+        </div>
       </div>
     </div>
+  );
+};
+
+const Weather = () => {
+  const { weather } = useWeather();
+  const [showModal, setShowModal] = useState(false);
+
+  if (!weather || !weather.length) return null;
+
+  // find now
+  const currentWeather = weather.find((w) => {
+    const now = new Date();
+    const time = new Date(w.time);
+    return (
+      time.getDate() === now.getDate() && time.getHours() === now.getHours()
+    );
+  });
+
+  return (
+    <>
+      <div className="cursor-pointer hover:bg-white/20 p-2 rounded-lg" title="Show More" onClick={() => setShowModal(true)}>
+        <WeatherItem weatherData={currentWeather} now={true} />
+      </div>
+
+      <MyModal show={showModal} onClose={() => setShowModal(false)}>
+      </MyModal>
+    </>
   );
 };
 
@@ -41,6 +73,11 @@ export const useWeather = () => {
       });
     };
 
+    const dayOrNight = (time = new Date()) => {
+      const hour = time.getHours();
+      return hour > 6 && hour < 18 ? "day" : "night";
+    };
+
     const getWeather = async () => {
       try {
         const position = await getGeoLocation();
@@ -52,25 +89,26 @@ export const useWeather = () => {
         const res = await fetch(weatherApi);
         const data = await res.json();
 
-        const { current_weather } = data;
-        const { temperature, weathercode } = current_weather;
+        const { temperature_2m, weathercode, time } = data.hourly;
 
-        // determine day or night
-        const date = new Date();
-        const hour = date.getHours();
-        const isDay = hour > 6 && hour < 18;
+        const weatherForecast =
+          time &&
+          time.map((t, index) => {
+            const isDay = dayOrNight(new Date(t));
+            const weather = wmo[weathercode[index]][isDay ? "day" : "night"];
 
-        // get weather description and image
-        const weather = wmo[weathercode][isDay ? "day" : "night"];
+            return {
+              time: t,
+              temperature: temperature_2m[index],
+              ...weather,
+            };
+          });
 
-        setWeather({
-          temperature: temperature,
-          ...weather,
-        });
+        setWeather(weatherForecast);
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     getWeather();
 
