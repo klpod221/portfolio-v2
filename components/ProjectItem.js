@@ -6,17 +6,18 @@ const ProjectItem = ({ project }) => {
   return (
     <Link
       href={project.url}
-      passHref
       title={`View ${project.title} project`}
-      className="relative rounded-lg overflow-hidden flex items-center justify-center group"
+      className="relative flex flex-col items-center justify-center group"
+      target="_blank"
     >
-      <div className="flex items-center justify-center relative overflow-hidden group">
+      <div className="flex flex-col items-center justify-center relative rounded-lg overflow-hidden group h-full w-full">
         {/* image */}
         <Image
           src={project.image}
           width={500}
           height={300}
           alt={project.title}
+          className="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-105"
         />
 
         {/* overlay */}
@@ -40,6 +41,9 @@ const ProjectItem = ({ project }) => {
           </div>
         </div>
       </div>
+
+      {/* title */}
+      <div className="text-center text-[13px] font-medium mt-1">{project.title}</div>
     </Link>
   );
 };

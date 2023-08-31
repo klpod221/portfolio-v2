@@ -10,44 +10,44 @@ import ProjectItem from "../components/ProjectItem";
 const workSlides = [
   [
     {
-      title: "title",
-      image: "/images/thumb1.jpg",
-      url: ""
+      title: "Browser Start Page",
+      image: "/images/projects/brower-start-page.png",
+      url: "/projects/startpage",
     },
     {
-      title: "title",
+      title: "Demo Project",
       image: "/images/thumb2.jpg",
       url: ""
     },
     {
-      title: "title",
+      title: "Demo Project",
       image: "/images/thumb3.jpg",
       url: ""
     },
     {
-      title: "title",
+      title: "Demo Project",
       image: "/images/thumb4.jpg",
       url: ""
     },
   ],
   [
     {
-      title: "title",
+      title: "Demo Project",
       image: "/images/thumb4.jpg",
       url: ""
     },
     {
-      title: "title",
-      image: "/images/thumb1.jpg",
-      url: ""
+      title: "Browser Start Page",
+      image: "/images/projects/brower-start-page.png",
+      url: "/projects/startpage",
     },
     {
-      title: "title",
+      title: "Demo Project",
       image: "/images/thumb2.jpg",
       url: ""
     },
     {
-      title: "title",
+      title: "Demo Project",
       image: "/images/thumb3.jpg",
       url: ""
     },
@@ -61,7 +61,7 @@ const WorkSlider = () => {
       modules={[Pagination, Autoplay]}
       pagination={{ clickable: true }}
       autoplay={{ delay: 3000 }}
-      className="h-[350px] sm:h-[480px]"
+      className="h-[350px] sm:h-[480px] md:max-w-2xl mx-auto"
     >
       {workSlides.map((slide, slideIndex) => {
         return (

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../utils/animations";
+import projects from "../../const/projects_data";
 
 import WorkSlider from "../../components/WorkSlider";
 import ProjectItem from "../../components/ProjectItem";
@@ -19,7 +20,7 @@ const Work = () => {
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-x-8">
           {/* text */}
-          <div className="text-center flex xl:w-[30vw] flex-col lg:text-left mb-4 xl:mb-0">
+          <div className="text-center flex xl:w-[30vw] flex-col xl:text-left mb-4 xl:mb-0 justify-center items-center xl:justify-start xl:items-start">
             <motion.h2
               variants={fadeIn("up", 0.2)}
               initial="hidden"
@@ -77,17 +78,8 @@ const Work = () => {
         {/* List Project */}
         <div className="flex flex-col gap-y-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {[...Array(10)].map((_, index) => {
-              return (
-                <ProjectItem
-                  key={index}
-                  project={{
-                    title: `Project ${index + 1}`,
-                    image: "/images/thumb1.jpg",
-                    url: "",
-                  }}
-                />
-              );
+            {projects.map((project, index) => {
+              return <ProjectItem key={index} project={project} />;
             })}
           </div>
         </div>
