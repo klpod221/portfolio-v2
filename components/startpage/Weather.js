@@ -1,43 +1,55 @@
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import axios from "axios";
 
 const Weather = () => {
   const [weather, setWeather] = useState({});
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
 
-  // detect user geo location
+  // get location
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const { latitude, longitude } = position.coords;
+    const getLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+        });
+      } else {
+        console.error("Can't get location");
+      }
+    };
 
-        const getWeather = async () => {
-          const res = await fetch(`/api/weather?lat=${latitude}&lon=${longitude}`);
-          const data = await res.json();
-
-          setWeather(data);
-        };
-
-        // fetch current weather every 5 minutes
-        getWeather();
-
-        const interval = setInterval(() => {
-          getWeather();
-        }, 300000);
-
-        return () => clearInterval(interval);
-      });
-    }
+    getLocation();
   }, []);
+
+  // get weather
+  useEffect(() => {
+    const getWeather = async () => {
+      try {
+        const { data } = await axios.get(
+          `/api/weather?lat=${latitude}&lon=${longitude}`
+        );
+        setWeather(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getWeather();
+  }, [latitude, longitude]);
 
   return (
     <div className="flex items-center">
       <div className="flex items-center">
-        <Image
-          src={weather? weather.image : ""}
-          alt={weather.description}
-          width={50}
-          height={50}
-        />
+        {weather.image && (
+          <Image
+            src={weather.image}
+            alt={weather.description}
+            width={50}
+            height={50}
+          />
+        )}
       </div>
       <div className="flex flex-col ml-2">
         <span className="text-white text-sm">{weather.description}</span>
