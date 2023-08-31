@@ -11,16 +11,21 @@ const AnalogueClock = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // round degrees with 1 decimal
+  const secondsDegrees = Math.round(time.getSeconds() * 6);
+  const minutesDegrees = Math.round((time.getMinutes() + time.getSeconds() / 60) * 6);
+  const hoursDegrees = Math.round((time.getHours() % 12 + time.getMinutes() / 60) * 30);
+
   const secondsStyle = {
-    transform: `rotate(${time.getSeconds() * 6}deg)`
+    transform: `rotate(${secondsDegrees}deg)`,
   };
 
   const minutesStyle = {
-    transform: `rotate(${(time.getMinutes() + time.getSeconds() / 60) * 6}deg)`
+    transform: `rotate(${minutesDegrees}deg)`,
   };
 
   const hoursStyle = {
-    transform: `rotate(${(time.getHours() % 12 + time.getMinutes() / 60) * 30}deg)`
+    transform: `rotate(${hoursDegrees}deg)`,
   };
 
   return (
