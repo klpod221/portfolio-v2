@@ -1,43 +1,35 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import axios from "axios";
 
 const Weather = () => {
   const [weather, setWeather] = useState({});
-  const [latitude, setLatitude] = useState(0);
-  const [longitude, setLongitude] = useState(0);
 
-  // get location
+  // detect user geo location
   useEffect(() => {
-    const getLocation = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-          setLatitude(position.coords.latitude);
-          setLongitude(position.coords.longitude);
-        });
-      } else {
-        console.error("Can't get location");
-      }
-    };
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
 
-    getLocation();
+        const getWeather = async () => {
+          const res = await fetch(
+            `/api/weather?lat=${latitude}&lon=${longitude}`
+          );
+          const data = await res.json();
+
+          setWeather(data);
+        };
+
+        // fetch current weather every 5 minutes
+        getWeather();
+
+        const interval = setInterval(() => {
+          getWeather();
+        }, 300000);
+
+        return () => clearInterval(interval);
+      });
+    }
   }, []);
-
-  // get weather
-  useEffect(() => {
-    const getWeather = async () => {
-      try {
-        const { data } = await axios.get(
-          `/api/weather?lat=${latitude}&lon=${longitude}`
-        );
-        setWeather(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getWeather();
-  }, [latitude, longitude]);
 
   return (
     <div className="flex items-center">
@@ -53,7 +45,9 @@ const Weather = () => {
       </div>
       <div className="flex flex-col ml-2">
         <span className="text-white text-sm">{weather.description}</span>
-        <span className="text-white text-sm">{weather.temperature}°C</span>
+        <span className="text-white text-sm">
+          {weather.temperature && `${weather.temperature}°C`}
+        </span>
       </div>
     </div>
   );
