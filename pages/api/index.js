@@ -19,5 +19,5 @@ export default function handler(req, res) {
         url: "https://www.twitch.tv/klpod221",
       },
     ],
-  });;
+  });
 }
