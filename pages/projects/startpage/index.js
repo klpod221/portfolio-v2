@@ -43,7 +43,7 @@ const StartPage = () => {
         <title>Start Page | klpod221</title>
       </Head>
       <RandomBackground>
-        <div className="container mx-auto relative h-screen">
+        <div className="container mx-auto relative h-full">
           <div className="flex flex-col items-center justify-center h-full">
             {/* analogue clock */}
             <AnalogueClock />
@@ -52,7 +52,7 @@ const StartPage = () => {
             <QuickLinks />
           </div>
 
-          <div className="absolute bottom-16 left-2">
+          <div className="absolute left-2 bottom-16 xl:bottom-2">
             {/* weather */}
             <Weather />
           </div>
