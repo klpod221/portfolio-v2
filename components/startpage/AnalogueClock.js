@@ -1,20 +1,21 @@
 import { useState, useEffect } from "react";
 
 const AnalogueClock = () => {
-  const [time, setTime] = useState(new Date());
+  const [secondsDegrees, setSecondsDegrees] = useState(0);
+  const [minutesDegrees, setMinutesDegrees] = useState(0);
+  const [hoursDegrees, setHoursDegrees] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTime(new Date());
+      const time = new Date();
+
+      setSecondsDegrees(Math.round(time.getSeconds() * 6));
+      setMinutesDegrees(Math.round((time.getMinutes() + time.getSeconds() / 60) * 6));
+      setHoursDegrees(Math.round((time.getHours() % 12 + time.getMinutes() / 60) * 30));
     }, 1000);
 
     return () => clearInterval(interval);
   }, []);
-
-  // round degrees with 1 decimal
-  const secondsDegrees = Math.round(time.getSeconds() * 6);
-  const minutesDegrees = Math.round((time.getMinutes() + time.getSeconds() / 60) * 6);
-  const hoursDegrees = Math.round((time.getHours() % 12 + time.getMinutes() / 60) * 30);
 
   const secondsStyle = {
     transform: `rotate(${secondsDegrees}deg)`,
