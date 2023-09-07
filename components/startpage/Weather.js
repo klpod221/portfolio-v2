@@ -1,38 +1,8 @@
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import wmo from "../../const/wmo_data";
 import MyModal from "../MyModal";
-
-const WeatherItem = ({ weatherData, now = false }) => {
-  return (
-    <div className="flex flex-col">
-      {now ? (
-        <span className="text-white text-lg">Now</span>
-      ) : (
-        <span className="text-white text-lg">
-          {new Date(weatherData.time).getHours()}:00
-        </span>
-      )}
-
-      <div className="flex items-center">
-        {weatherData.image && (
-          <Image
-            src={weatherData.image}
-            alt={weatherData.description}
-            width={50}
-            height={50}
-          />
-        )}
-        <div className="flex flex-col ml-2">
-          <span className="text-white text-lg">{weatherData.description}</span>
-          <span className="text-white text-lg">
-            {weatherData.temperature && `${weatherData.temperature}°C`}
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-};
+import WeatherItem from "./WeatherItem";
+import TemperatureForecast from "./TemperatureForecast";
 
 const Weather = () => {
   const { weather } = useWeather();
@@ -49,13 +19,48 @@ const Weather = () => {
     );
   });
 
+  const perDateData = weather.reduce((acc, cur) => {
+    const date =
+      new Date(cur.time).getDate() +
+      "-" +
+      new Date(cur.time).getMonth() +
+      "-" +
+      new Date(cur.time).getFullYear();
+
+    if (!acc[date]) acc[date] = [];
+    acc[date].push(cur);
+    return acc;
+  }, {});
+
+  const weatherData = Object.keys(perDateData).map((date) => {
+    return {
+      date: date,
+      data: perDateData[date].map((d) => {
+        return {
+          x: new Date(d.time).getHours(),
+          y: d.temperature,
+        };
+      }),
+    };
+  });
+
   return (
     <>
-      <div className="cursor-pointer hover:bg-white/20 p-2 rounded-lg" title="Show More" onClick={() => setShowModal(true)}>
+      <div
+        className="cursor-pointer hover:bg-white/20 p-2 rounded-lg"
+        title="Show More"
+        onClick={() => setShowModal(true)}
+      >
         <WeatherItem weatherData={currentWeather} now={true} />
       </div>
 
       <MyModal show={showModal} onClose={() => setShowModal(false)}>
+        {/* show chart */}
+        <div className="mb-4">
+          <TemperatureForecast
+            weatherData={weatherData}
+          />
+        </div>
       </MyModal>
     </>
   );
@@ -105,6 +110,8 @@ export const useWeather = () => {
           });
 
         setWeather(weatherForecast);
+
+        // split weatherForecast per day
       } catch (error) {
         console.error(error);
       }

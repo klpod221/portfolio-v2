@@ -4,7 +4,6 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ["openweathermap.org"],
-    unoptimized: true,
   },
 }
 
