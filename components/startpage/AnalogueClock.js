@@ -1,20 +1,27 @@
 import { useState, useEffect } from "react";
 
 const AnalogueClock = () => {
-  const [time, setTime] = useState(new Date());
+  const [secondsDegrees, setSecondsDegrees] = useState(null);
+  const [minutesDegrees, setMinutesDegrees] = useState(null);
+  const [hoursDegrees, setHoursDegrees] = useState(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTime(new Date());
+      const time = new Date();
+
+      if (secondsDegrees === null || minutesDegrees === null || hoursDegrees === null) {
+        setSecondsDegrees(time.getSeconds() * 6);
+        setMinutesDegrees((time.getMinutes() + time.getSeconds() / 60) * 6);
+        setHoursDegrees((time.getHours() % 12 + time.getMinutes() / 60) * 30);
+      } else {
+        setSecondsDegrees(secondsDegrees + 6);
+        setMinutesDegrees(minutesDegrees + 0.1);
+        setHoursDegrees(hoursDegrees + 0.008333333333333333);
+      }
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
-
-  // round degrees with 1 decimal
-  const secondsDegrees = Math.round(time.getSeconds() * 6);
-  const minutesDegrees = Math.round((time.getMinutes() + time.getSeconds() / 60) * 6);
-  const hoursDegrees = Math.round((time.getHours() % 12 + time.getMinutes() / 60) * 30);
+  }, [secondsDegrees, minutesDegrees, hoursDegrees]);
 
   const secondsStyle = {
     transform: `rotate(${secondsDegrees}deg)`,
@@ -48,7 +55,7 @@ const AnalogueClock = () => {
           stroke="#fff"
           strokeWidth="3"
           strokeLinecap="round"
-          className={`origin-[50px_50px]`}
+          className={`origin-[50px_50px] transition-all duration-1000 ease-in-out`}
           style={hoursStyle}
         />
 
@@ -60,7 +67,7 @@ const AnalogueClock = () => {
           stroke="#fff"
           strokeWidth="2"
           strokeLinecap="round"
-          className={`origin-[50px_50px]`}
+          className={`origin-[50px_50px] transition-all duration-1000 ease-in-out`}
           style={minutesStyle}
         />
 
@@ -72,7 +79,7 @@ const AnalogueClock = () => {
           stroke="#fff"
           strokeWidth="1.5"
           strokeLinecap="round"
-          className={`origin-[50px_50px]`}
+          className={`origin-[50px_50px] transition-all duration-1000 ease-in-out`}
           style={secondsStyle}
         />
 
