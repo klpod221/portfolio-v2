@@ -6,36 +6,6 @@ import AnalogueClock from "../../../components/startpage/AnalogueClock";
 import QuickLinks from "../../../components/startpage/QuickLinks";
 import Weather from "../../../components/startpage/Weather";
 
-import {
-  RiFacebookLine,
-  RiYoutubeLine,
-  RiGithubLine,
-  RiGitlabLine,
-} from "react-icons/ri";
-
-const quickLinks = [
-  {
-    name: "Facebook",
-    url: "https://facebook.com/",
-    icon: <RiFacebookLine />,
-  },
-  {
-    name: "Youtube",
-    url: "https://youtube.com/",
-    icon: <RiYoutubeLine />,
-  },
-  {
-    name: "Github",
-    url: "https://github.com/klpod221",
-    icon: <RiGithubLine />,
-  },
-  {
-    name: "Gitlab",
-    url: "https://git.hachinet.com/",
-    icon: <RiGitlabLine />,
-  },
-];
-
 const StartPage = () => {
   return (
     <>
