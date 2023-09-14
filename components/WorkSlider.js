@@ -15,9 +15,9 @@ const workSlides = [
       url: "/projects/startpage",
     },
     {
-      title: "Demo Project",
-      image: "/images/thumb2.jpg",
-      url: ""
+      title: "Been Together",
+      image: "/images/projects/been-together.jpg",
+      url: "/projects/been-together",
     },
     {
       title: "Demo Project",
@@ -42,9 +42,9 @@ const workSlides = [
       url: "/projects/startpage",
     },
     {
-      title: "Demo Project",
-      image: "/images/thumb2.jpg",
-      url: ""
+      title: "Been Together",
+      image: "/images/projects/been-together.jpg",
+      url: "/projects/been-together",
     },
     {
       title: "Demo Project",
