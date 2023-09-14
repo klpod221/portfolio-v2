@@ -41,7 +41,11 @@ const TestimonialSlider = () => {
       modules={[Navigation, Pagination, Autoplay]}
       navigation={true}
       pagination={{ clickable: true }}
-      autoplay={{ delay: 3000 }}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      }}
       className="h-[400px]"
     >
       {testimonialData.map((item, index) => {
@@ -62,9 +66,7 @@ const TestimonialSlider = () => {
                 </div>
 
                 {/* name */}
-                <div className="text-lg">
-                  {item.name}
-                </div>
+                <div className="text-lg">{item.name}</div>
 
                 {/* position */}
                 <div className="text-[12px] uppercase font-extralight tracking-widest">

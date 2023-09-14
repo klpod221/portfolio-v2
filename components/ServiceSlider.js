@@ -60,7 +60,11 @@ const ServiceSlider = () => {
       modules={[FreeMode, Pagination, Autoplay]}
       freeMode={true}
       pagination={{ clickable: true }}
-      autoplay={{ delay: 3000 }}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      }}
       className="h-[240px] sm:h-[340px]"
     >
       {serviceData.map((item, index) => {
