@@ -31,6 +31,7 @@ const Socials = () => {
             className="hover:text-accent transition-all duration-300"
             title={link.name}
             target="_blank"
+            aria-label={link.name}
           >
             {link.icon}
           </Link>

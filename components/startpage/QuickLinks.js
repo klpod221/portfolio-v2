@@ -40,6 +40,7 @@ const QuickLinks = () => {
             key={index}
             className="text-white hover:text-accent transition-all duration-300"
             title={link.name}
+            aria-label={link.name}
           >
             {link.icon}
           </Link>

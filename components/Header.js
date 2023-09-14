@@ -9,7 +9,7 @@ const Header = () => {
       <div className="container mx-auto">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-y-6 py-8">
           {/* logo */}
-          <Link href={"/"}>
+          <Link href={"/"} aria-label="Home">
             <Image
               src={"/images/logo.svg"}
               width={150}

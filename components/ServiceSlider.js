@@ -69,6 +69,7 @@ const ServiceSlider = () => {
             <Link
               title="Contact me"
               href={"/contact?service=" + item.title}
+              aria-label={`Contact me for ${item.title}`}
               className="relative bg-[#412f7b26] h-[180px] sm:h-[240px] md:h-[262px] xl:h-[280px] rounded-lg px-6 py-8 sm:p-3 md:px-6 md:py-8 flex sm:flex-col gap-x-6 sm:gap-x-0 group cursor-pointer hover:bg-[#5941a926] transition-all duration-300"
             >
               {/* icon */}

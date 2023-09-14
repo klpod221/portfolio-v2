@@ -11,19 +11,26 @@ import {
 } from "react-icons/hi2";
 
 export const navData = [
-  { name: "Home", path: "/", icon: <HiHome /> },
-  { name: "About", path: "/about", icon: <HiUser /> },
-  { name: "Services", path: "/services", icon: <HiRectangleGroup /> },
-  { name: "Work", path: "/work", icon: <HiViewColumns /> },
+  { name: "Home", path: "/", icon: <HiHome />, ariaLabel: "Home" },
+  { name: "About", path: "/about", icon: <HiUser />, ariaLabel: "About" },
+  {
+    name: "Services",
+    path: "/services",
+    icon: <HiRectangleGroup />,
+    ariaLabel: "Services",
+  },
+  { name: "Work", path: "/work", icon: <HiViewColumns />, ariaLabel: "Work" },
   {
     name: "Testimonials",
     path: "/testimonials",
     icon: <HiChatBubbleBottomCenterText />,
+    ariaLabel: "Testimonials",
   },
   {
     name: "Contact",
     path: "/contact",
     icon: <HiEnvelope />,
+    ariaLabel: "Contact",
   },
 ];
 
@@ -42,6 +49,7 @@ const Nav = () => {
                 item.path === pathname && "text-accent"
               } relative flex items-center group hover:text-accent transition-all duration-300`}
               href={item.path}
+              aria-label={item.ariaLabel}
               key={index}
             >
               {/* tooltip */}

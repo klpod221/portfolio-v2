@@ -9,6 +9,8 @@ export default function Custom404() {
       </p>
       <Link
         href="/"
+        title="Go back home"
+        aria-label="Go back home"
         className="mt-5 px-4 py-2 bg-blue-500 text-white rounded-md"
       >
         Go back home
