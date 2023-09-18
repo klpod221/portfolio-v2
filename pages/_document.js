@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 export default function Document() {
   return (
@@ -20,7 +21,7 @@ export default function Document() {
           data-n-head="ssr"
           data-hid="description"
           name="description"
-          content="Hi, I'm klpod221, mainly a web developer. You can see my projects and contact me here, and you can also see my social media. I can make a website for you or make your website better and many more."
+          content="Hi, I'm klpod221, mainly a web developer. You can see my work and contact me for services, and you can also see my social media. I can make a website for you or make your website better and many more."
         />
 
         <meta property="og:title" content="klpod221 | Portfolio" />
@@ -28,6 +29,17 @@ export default function Document() {
         <meta property="og:image" content="/favicon.png" />
         <meta property="og:url" content="https://klpod221.github.io/" />
         <meta property="og:card" content="summary" />
+
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-XE1P7GCEZ7"></Script>
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-XE1P7GCEZ7');
+          `}
+        </Script>
 
         <link rel="icon" href="/favicon.png" />
       </Head>
