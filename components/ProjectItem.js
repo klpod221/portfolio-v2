@@ -10,6 +10,7 @@ const ProjectItem = ({ project }) => {
       className="relative flex flex-col items-center justify-center group"
       aria-label={`View ${project.title} project`}
       target="_blank"
+      rel="noopener noreferrer"
     >
       <div className="flex flex-col items-center justify-center relative rounded-lg overflow-hidden group h-full w-full">
         {/* image */}

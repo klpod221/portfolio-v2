@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import RandomBackground from "../../../components/RandomBackground";
+import FullBackground from "../../../components/FullBackground";
 
 import AnalogueClock from "../../../components/startpage/AnalogueClock";
 import QuickLinks from "../../../components/startpage/QuickLinks";
@@ -12,7 +12,7 @@ const StartPage = () => {
       <Head>
         <title>Start Page | klpod221</title>
       </Head>
-      <RandomBackground>
+      <FullBackground>
         <div className="container mx-auto relative h-full">
           <div className="flex flex-col items-center justify-center h-full">
             {/* analogue clock */}
@@ -27,7 +27,7 @@ const StartPage = () => {
             <Weather />
           </div>
         </div>
-      </RandomBackground>
+      </FullBackground>
     </>
   );
 };

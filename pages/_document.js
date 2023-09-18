@@ -4,11 +4,10 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <meta name="description" content="klpod221" />
         <meta name="author" content="klpod221" />
         <meta
           name="keywords"
-          content="klpod221, portfolio, nextjs, tailwindcss"
+          content="klpod221, portfolio, nextjs, tailwindcss, home, services, works, testimonials, contact, projects"
         />
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
@@ -23,6 +22,12 @@ export default function Document() {
           name="description"
           content="klpod221 portfolio"
         />
+
+        <meta property="og:title" content="klpod221 | Portfolio" />
+        <meta property="og:description" content="klpod221 portfolio" />
+        <meta property="og:image" content="/favicon.png" />
+        <meta property="og:url" content="https://klpod221.github.io/" />
+        <meta property="og:card" content="summary" />
 
         <link rel="icon" href="/favicon.png" />
       </Head>

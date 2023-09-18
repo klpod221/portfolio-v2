@@ -12,18 +12,19 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   return (
-    <AnimatePresence mode="wait">
+    <>
       <Head>
         <title>klpod221 | Portfolio</title>
       </Head>
-
-      <motion.div key={router.route} className="h-full">
-        <Transition />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </motion.div>
-    </AnimatePresence>
+      <AnimatePresence mode="wait">
+        <motion.div key={router.route} className="h-full">
+          <Transition />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </motion.div>
+      </AnimatePresence>
+    </>
   );
 }
 

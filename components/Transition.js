@@ -35,6 +35,7 @@ const Transition = () => {
             width={150}
             height={150}
             alt="loading spinner"
+            priority={true}
           />
         </div>
       </motion.div>

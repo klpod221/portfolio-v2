@@ -8,6 +8,7 @@ const TopLeftImg = () => {
         alt="Top Left Image"
         width={400}
         height={400}
+        priority={true}
       />
     </div>
   );
