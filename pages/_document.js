@@ -10,6 +10,7 @@ export default function Document() {
           name="keywords"
           content="klpod221, portfolio, nextjs, tailwindcss, home, services, works, testimonials, contact, projects"
         />
+        <meta httpEquiv content="interest-cohort=()"/>
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
         <meta name="google" content="notranslate" />
