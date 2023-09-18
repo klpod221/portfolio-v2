@@ -1,9 +1,9 @@
 import "../styles/globals.css";
 
-import { useState, useEffect } from "react";
-import Head from "next/head";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
+import Head from "next/head";
+import Script from "next/script";
 
 import Layout from "../components/Layout";
 import Transition from "../components/Transition";
@@ -13,6 +13,20 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-XE1P7GCEZ7"
+      ></Script>
+      <Script id="google-analytics">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-XE1P7GCEZ7');
+          `}
+      </Script>
+
       <Head>
         <title>klpod221 | Portfolio</title>
       </Head>
