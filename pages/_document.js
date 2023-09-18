@@ -20,7 +20,7 @@ export default function Document() {
           data-n-head="ssr"
           data-hid="description"
           name="description"
-          content="Hi, I'm klpod221, mainly a web developer. You can see my projects and contact me here, and you can also see my social media. I can make a website for you or make your website better, I can also make a discord bot for you and many more."
+          content="Hi, I'm klpod221, mainly a web developer. You can see my projects and contact me here, and you can also see my social media. I can make a website for you or make your website better and many more."
         />
 
         <meta property="og:title" content="klpod221 | Portfolio" />
