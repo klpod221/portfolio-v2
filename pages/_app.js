@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
       <Script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-XE1P7GCEZ7"
-      ></Script>
+      />
       <Script id="google-analytics">
         {`
             window.dataLayer = window.dataLayer || [];
@@ -26,6 +26,13 @@ function MyApp({ Component, pageProps }) {
             gtag('config', 'G-XE1P7GCEZ7');
           `}
       </Script>
+
+      <Script
+        id="adsbygoogle"
+        strategy="afterInteractive"
+        crossorigin="anonymous"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1467915015924466"
+      />
 
       <Head>
         <title>klpod221 | Portfolio</title>
