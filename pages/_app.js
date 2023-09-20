@@ -27,13 +27,6 @@ function MyApp({ Component, pageProps }) {
           `}
       </Script>
 
-      <Script
-        id="adsbygoogle"
-        strategy="afterInteractive"
-        crossorigin="anonymous"
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1467915015924466"
-      />
-
       <Head>
         <title>klpod221 | Portfolio</title>
       </Head>

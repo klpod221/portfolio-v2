@@ -17,6 +17,7 @@ export default function Document() {
           name="google-site-verification"
           content="1nzDcNaPTgJOrPDUsrQomChD5eThl3aWCAd_CMrhJlk"
         />
+        <meta name="google-adsense-account" content="ca-pub-1467915015924466" />
         <meta
           data-n-head="ssr"
           data-hid="description"
