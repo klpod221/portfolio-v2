@@ -32,7 +32,6 @@ export default function Document() {
         <meta property="og:card" content="summary" />
 
         <link rel="icon" href="/favicon.png" />
-
       </Head>
 
       <body className="bg-gray-900 text-white">

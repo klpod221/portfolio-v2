@@ -43,7 +43,7 @@ const Home = () => {
             exit="hidden"
             className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16"
           >
-            I&#39;m a full-stack developer based in Viet Nam. I have a passion
+            I&#39;m a full-stack developer from Viet Nam. I have a passion
             for web development and love to create for web and mobile devices.
           </motion.p>
 
