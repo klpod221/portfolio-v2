@@ -8,6 +8,11 @@ const projects = [
     title: "Been Together",
     image: "/images/projects/been-together.jpg",
     url: "/projects/been-together",
+  },
+  {
+    title: "Calculator",
+    image: "/images/projects/calculator.png",
+    url: "/code-tournament-calculator/",
   }
 ];
 

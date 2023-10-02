@@ -20,9 +20,9 @@ const workSlides = [
       url: "/projects/been-together",
     },
     {
-      title: "Demo Project",
-      image: "/images/thumb3.jpg",
-      url: "",
+      title: "Calculator",
+      image: "/images/projects/calculator.png",
+      url: "/code-tournament-calculator/",
     },
     {
       title: "Demo Project",
@@ -47,9 +47,9 @@ const workSlides = [
       url: "/projects/been-together",
     },
     {
-      title: "Demo Project",
-      image: "/images/thumb3.jpg",
-      url: "",
+      title: "Calculator",
+      image: "/images/projects/calculator.png",
+      url: "/code-tournament-calculator/",
     },
   ],
 ];
