@@ -26,8 +26,12 @@ const ProjectItem = ({ project }) => {
         <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#e838cc] to-[#4a22bd] opacity-0 group-hover:opacity-80 transition-all duration-700" />
 
         {/* title */}
-        <div className="absolute bottom-0 translate-y-full group-hover:-translate-y-10 group-hover:xl:-translate-y-20 transition-all duration-300">
-          <div className="flex items-center gap-x-2 text-[13px] tracing-[0.2em]">
+        <div className="absolute flex flex-col items-center px-3 bottom-0 translate-y-full group-hover:translate-y-1/2 group-hover:bottom-1/2 transition-all duration-700">
+          <div className="text-center text-[13px] font-medium">
+            {project.description}
+          </div>
+
+          <div className="flex items-center gap-x-2 text-[11px] tracing-[0.2em]">
             {/* title 1 */}
             <div className="delay-100">LIVE</div>
 
@@ -45,7 +49,9 @@ const ProjectItem = ({ project }) => {
       </div>
 
       {/* title */}
-      <div className="text-center text-[13px] font-medium mt-1">{project.title}</div>
+      <div className="text-center text-[13px] font-medium mt-1">
+        {project.title}
+      </div>
     </Link>
   );
 };
