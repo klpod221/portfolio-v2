@@ -1,4 +1,4 @@
-import Highcharts from "highcharts/highstock";
+import Highcharts, { Time } from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -7,8 +7,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const TemperatureForecast = ({ weatherData }) => {
-  if (!weatherData || !weatherData.length) return null;
+const TemperatureForecast = ({ forecastWeather }) => {
+  if (!forecastWeather || !forecastWeather.length)
+    return <div className="text-white">Loading...</div>;
 
   const getDay = (date) => {
     const day = new Date(date);
@@ -20,6 +21,19 @@ const TemperatureForecast = ({ weatherData }) => {
       month: "short",
       year: "numeric",
     });
+  };
+
+  const getTime = (time) => {
+    const date = new Date(time);
+
+    return (
+      Number(
+        date.toLocaleTimeString("en-GB", {
+          hour: "numeric",
+          hour12: false,
+        })
+      ) + 7
+    ); // GMT+7
   };
 
   return (
@@ -34,7 +48,7 @@ const TemperatureForecast = ({ weatherData }) => {
         }}
         slidesPerView={1}
       >
-        {weatherData.map((item, index) => {
+        {forecastWeather.map((item, index) => {
           return (
             <SwiperSlide key={index}>
               <HighchartsReact
@@ -49,7 +63,7 @@ const TemperatureForecast = ({ weatherData }) => {
                     enabled: false,
                   },
                   title: {
-                    text: getDay(item.date),
+                    text: getDay(item.date) + " (GMT+7)",
                     style: {
                       color: "#fff",
                     },
@@ -58,11 +72,14 @@ const TemperatureForecast = ({ weatherData }) => {
                     labels: {
                       enabled: true,
                       formatter: function () {
-                        return this.value + ":00";
+                        const time =
+                          this.value > 24 ? this.value - 24 : this.value;
+                        return time + ":00";
                       },
                       style: {
                         color: "#fff",
                       },
+                      startOnTick: true,
                     },
                   },
                   yAxis: {
@@ -88,13 +105,33 @@ const TemperatureForecast = ({ weatherData }) => {
                   series: [
                     {
                       name: "Temperature",
-                      data: item.data,
+                      data: item.weather.map((w) => {
+                        return {
+                          x: getTime(new Date(w.time).getTime()),
+                          y: w.temperature,
+                          description: w.description,
+                          icon: w.icon,
+                        };
+                      }),
                     },
                   ],
+                  tooltip: {
+                    useHtml: true,
+                    formatter: function () {
+                      return (
+                        (this.x + ":00") +
+                        "<br/><p class='capitalize'>" +
+                        this.point.description +
+                        "</p><br/>" +
+                        this.y +
+                        "°C"
+                      );
+                    },
+                  },
                   credits: {
                     enabled: true,
-                    text: "open-meteo.com",
-                    href: "https://open-meteo.com/",
+                    text: "openweathermap.org",
+                    href: "https://openweathermap.org/",
                   },
                 }}
               />

@@ -52,7 +52,7 @@ const FullBackground = ({ children, imageTags = null, bgImage = null, overlay = 
         style={style}
       />
 
-      <div className="relative z-10 h-full">{children}</div>
+      <div className="relative h-full">{children}</div>
     </div>
   );
 };

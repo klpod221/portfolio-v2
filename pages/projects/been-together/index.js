@@ -7,9 +7,27 @@ const BeenTogether = () => {
   const [time, setTime] = useState();
 
   useEffect(() => {
+    let startDay = localStorage.getItem("startDay");
+
+    const promptStartDay = () => {
+      startDay = prompt("Please enter start day (YYYY-MM-DD)", "2021-01-01");
+
+      if (!startDay.match(/^\d{4}-\d{2}-\d{2}$/)) {
+        alert("Invalid date format");
+        promptStartDay();
+        return;
+      }
+
+      localStorage.setItem("startDay", startDay);
+    };
+
+    if (!startDay || !startDay.match(/^\d{4}-\d{2}-\d{2}$/)) {
+      promptStartDay();
+    }
+
     const interval = setInterval(() => {
       const now = new Date();
-      const start = new Date("2019-09-27T00:00:00");
+      const start = new Date(startDay);
       const diff = now.getTime() - start.getTime();
 
       const isLeapYear = (year) => {
@@ -27,11 +45,13 @@ const BeenTogether = () => {
       }
 
       const months = Math.floor(
-        (diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * (365 / 12))
+        (diff % (1000 * 60 * 60 * 24 * 365)) /
+          (1000 * 60 * 60 * 24 * (365 / 12))
       );
 
       const days = Math.floor(
-        (diff % (1000 * 60 * 60 * 24 * (365 / 12))) / (1000 * 60 * 60 * 24) + leapYears
+        (diff % (1000 * 60 * 60 * 24 * (365 / 12))) / (1000 * 60 * 60 * 24) +
+          leapYears
       );
 
       const hours = Math.floor(
@@ -56,7 +76,7 @@ const BeenTogether = () => {
   return (
     <>
       <Head>
-        <title>Start Page | klpod221</title>
+        <title>Been Together | klpod221</title>
       </Head>
       <FullBackground>
         <div className="container mx-auto relative h-full">

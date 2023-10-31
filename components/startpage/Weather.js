@@ -1,48 +1,11 @@
 import { useState, useEffect } from "react";
-import wmo from "../../const/wmo_data";
 import MyModal from "../MyModal";
 import WeatherItem from "./WeatherItem";
 import TemperatureForecast from "./TemperatureForecast";
 
 const Weather = () => {
-  const { weather } = useWeather();
+  const { curWeather, forecastWeather } = useWeather();
   const [showModal, setShowModal] = useState(false);
-
-  if (!weather || !weather.length) return null;
-
-  // find now
-  const currentWeather = weather.find((w) => {
-    const now = new Date();
-    const time = new Date(w.time);
-    return (
-      time.getDate() === now.getDate() && time.getHours() === now.getHours()
-    );
-  });
-
-  const perDateData = weather.reduce((acc, cur) => {
-    const date =
-      new Date(cur.time).getDate() +
-      "-" +
-      new Date(cur.time).getMonth() +
-      "-" +
-      new Date(cur.time).getFullYear();
-
-    if (!acc[date]) acc[date] = [];
-    acc[date].push(cur);
-    return acc;
-  }, {});
-
-  const weatherData = Object.keys(perDateData).map((date) => {
-    return {
-      date: date,
-      data: perDateData[date].map((d) => {
-        return {
-          x: new Date(d.time).getHours(),
-          y: d.temperature,
-        };
-      }),
-    };
-  });
 
   return (
     <>
@@ -51,15 +14,13 @@ const Weather = () => {
         title="Show More"
         onClick={() => setShowModal(true)}
       >
-        <WeatherItem weatherData={currentWeather} now={true} />
+        <WeatherItem weatherData={curWeather} now={true} />
       </div>
 
       <MyModal show={showModal} onClose={() => setShowModal(false)}>
         {/* show chart */}
         <div className="mb-4">
-          <TemperatureForecast
-            weatherData={weatherData}
-          />
+          <TemperatureForecast forecastWeather={forecastWeather} />
         </div>
       </MyModal>
     </>
@@ -68,7 +29,8 @@ const Weather = () => {
 
 // useWeather hook
 export const useWeather = () => {
-  const [weather, setWeather] = useState({});
+  const [curWeather, setCurWeather] = useState({});
+  const [forecastWeather, setForecastWeather] = useState({});
 
   // detect user geo location
   useEffect(() => {
@@ -78,10 +40,11 @@ export const useWeather = () => {
       });
     };
 
-    const dayOrNight = (time = new Date()) => {
-      const hour = time.getHours();
-      return hour > 6 && hour < 18 ? "day" : "night";
+    const getWeatherIcon = (icon) => {
+      return `https://openweathermap.org/img/wn/${icon}.png`;
     };
+
+    const appid = "1c387069e2733e7fdab6f17bde301841";
 
     const getWeather = async () => {
       try {
@@ -89,45 +52,77 @@ export const useWeather = () => {
         if (!position) return;
         const { latitude, longitude } = position.coords;
 
-        const weatherApi = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,weathercode&daily=sunrise,sunset&timezone=Asia/Ho_Chi_Minh&current_weather=true`;
+        const weatherApi = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${appid}&units=metric`;
 
         const res = await fetch(weatherApi);
         const data = await res.json();
 
-        const { temperature_2m, weathercode, time } = data.hourly;
+        const weatherData = {
+          temperature: data.main.temp,
+          description: data.weather[0].description,
+          icon: getWeatherIcon(data.weather[0].icon),
+          time: new Date(),
+        };
 
-        const weatherForecast =
-          time &&
-          time.map((t, index) => {
-            const isDay = dayOrNight(new Date(t));
-            const weather = wmo[weathercode[index]][isDay ? "day" : "night"];
+        setCurWeather(weatherData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-            return {
-              time: t,
-              temperature: temperature_2m[index],
-              ...weather,
-            };
-          });
+    const getForecastWeather = async () => {
+      try {
+        const position = await getGeoLocation();
+        if (!position) return;
+        const { latitude, longitude } = position.coords;
 
-        setWeather(weatherForecast);
+        const weatherApi = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${appid}&units=metric`;
 
-        // split weatherForecast per day
+        const res = await fetch(weatherApi);
+        const { list: data } = await res.json();
+
+        const forecastWeatherData = data.map((d) => {
+          return {
+            temperature: d.main.temp,
+            description: d.weather[0].description,
+            icon: getWeatherIcon(d.weather[0].icon),
+            time: d.dt_txt,
+          };
+        });
+
+        const forecastWeather = forecastWeatherData.reduce((acc, cur) => {
+          const date = cur.time.split(" ")[0];
+          const index = acc.findIndex((a) => a.date === date);
+          if (index === -1) {
+            acc.push({
+              date,
+              weather: [cur],
+            });
+          } else {
+            acc[index].weather.push(cur);
+          }
+          return acc;
+        }, []);
+
+        setForecastWeather(forecastWeather);
       } catch (error) {
         console.error(error);
       }
     };
 
     getWeather();
+    getForecastWeather();
 
     // refresh weather every 10 minutes
     const interval = setInterval(() => {
       getWeather();
+      getForecastWeather();
     }, 600000);
 
     return () => clearInterval(interval);
   }, []);
 
-  return { weather };
+  return { curWeather, forecastWeather };
 };
 
 export default Weather;

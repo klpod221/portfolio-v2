@@ -1,6 +1,8 @@
 import Image from "next/image";
 
 const WeatherItem = ({ weatherData, now = false }) => {
+  if (!weatherData) return null;
+
   return (
     <div className="flex flex-col">
       {now ? (
@@ -12,16 +14,16 @@ const WeatherItem = ({ weatherData, now = false }) => {
       )}
 
       <div className="flex items-center">
-        {weatherData.image && (
+        {weatherData.icon && (
           <Image
-            src={weatherData.image}
+            src={weatherData.icon}
             alt={weatherData.description}
             width={50}
             height={50}
           />
         )}
         <div className="flex flex-col ml-2">
-          <span className="text-white text-lg">{weatherData.description}</span>
+          <span className="text-white text-lg capitalize">{weatherData.description}</span>
           <span className="text-white text-lg">
             {weatherData.temperature && `${weatherData.temperature}°C`}
           </span>
