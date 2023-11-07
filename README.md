@@ -1,6 +1,9 @@
-# --// klpod221 //--
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+    <h1>--// klpod221 //--</h1>
+    <img src="https://img.shields.io/github/last-commit/klpod221/klpod221.github.io?style=for-the-badge&color=ffb4a2&labelColor=201a19">
+    <img src="https://img.shields.io/github/stars/klpod221/klpod221.github.io?style=for-the-badge&color=e6c419&labelColor=1d1b16">
+    <img src="https://img.shields.io/github/repo-size/klpod221/klpod221.github.io?style=for-the-badge&color=a8c7ff&labelColor=1a1b1f">
+</div>
 
 ## Getting Started
 
