@@ -23,6 +23,12 @@ const projects = [
     description: "Aesthetic, dynamic and minimal dots for Arch Linux + Hyprland",
     url: "/klpod0s",
   },
+  {
+    title: "Get members of Facebook group",
+    image: "/images/projects/get-facebook-members-extension.png",
+    description: "Chrome Extension to get member of Facebook group and export to xlsx file",
+    url: "/chrome-extension-get-member-of-facebook-group"
+  }
 ];
 
 export default projects;

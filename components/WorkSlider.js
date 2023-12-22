@@ -18,7 +18,8 @@ const workSlides = [
     {
       title: "Been Together",
       image: "/images/projects/been-together.jpg",
-      description: "A web app to count how long you've been together with your partner.",
+      description:
+        "A web app to count how long you've been together with your partner.",
       url: "/projects/been-together",
     },
     {
@@ -30,7 +31,8 @@ const workSlides = [
     {
       title: "klpod0s",
       image: "/images/projects/klpod0s.png",
-      description: "Aesthetic, dynamic and minimal dots for Arch Linux + Hyprland",
+      description:
+        "Aesthetic, dynamic and minimal dots for Arch Linux + Hyprland",
       url: "/klpod0s",
     },
   ],
@@ -38,7 +40,8 @@ const workSlides = [
     {
       title: "klpod0s",
       image: "/images/projects/klpod0s.png",
-      description: "Aesthetic, dynamic and minimal dots for Arch Linux + Hyprland",
+      description:
+        "Aesthetic, dynamic and minimal dots for Arch Linux + Hyprland",
       url: "/klpod0s",
     },
     {
@@ -50,14 +53,16 @@ const workSlides = [
     {
       title: "Been Together",
       image: "/images/projects/been-together.jpg",
-      description: "A web app to count how long you've been together with your partner.",
+      description:
+        "A web app to count how long you've been together with your partner.",
       url: "/projects/been-together",
     },
     {
-      title: "Calculator",
-      image: "/images/projects/calculator.png",
-      description: "A simple calculator app.",
-      url: "/code-tournament-calculator/",
+      title: "Get members of Facebook group",
+      image: "/images/projects/get-facebook-members-extension.png",
+      description:
+        "Chrome Extension to get member of Facebook group and export to xlsx file",
+      url: "/chrome-extension-get-member-of-facebook-group",
     },
   ],
 ];
@@ -71,7 +76,7 @@ const WorkSlider = () => {
       autoplay={{
         delay: 3000,
         disableOnInteraction: false,
-        pauseOnMouseEnter: true
+        pauseOnMouseEnter: true,
       }}
       className="h-[350px] sm:h-[480px] md:max-w-2xl mx-auto"
     >
