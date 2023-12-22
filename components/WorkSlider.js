@@ -51,11 +51,10 @@ const workSlides = [
       url: "/projects/startpage",
     },
     {
-      title: "Been Together",
-      image: "/images/projects/been-together.jpg",
-      description:
-        "A web app to count how long you've been together with your partner.",
-      url: "/projects/been-together",
+      title: "2048",
+      image: "/images/projects/2048.png",
+      description: "Clone of 2048 classic game",
+      url: "/2048",
     },
     {
       title: "Get members of Facebook group",
