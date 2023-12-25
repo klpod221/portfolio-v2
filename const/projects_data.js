@@ -32,12 +32,18 @@ const projects = [
     url: "/klpod0s",
   },
   {
-    title: "Get members of Facebook group",
+    title: "Get members of Facebook group Chrome Extension",
     image: "/images/projects/get-facebook-members-extension.png",
     description:
       "Chrome Extension to get member of Facebook group and export to xlsx file",
     url: "/chrome-extension-get-member-of-facebook-group",
   },
+  {
+    title: "Linkedin Connect Bot",
+    image: "/images/projects/linkedin-connect-bot.png",
+    description: "Simple Python + Selenium script that help auto send Linkedin connect request",
+    url: "/linkedin-connect-bot"
+  }
 ];
 
 export default projects;
