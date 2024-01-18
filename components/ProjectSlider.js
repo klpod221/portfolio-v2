@@ -4,10 +4,10 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import ProjectItem from "../components/ProjectItem";
+import ProjectItem from "./ProjectItem";
 
 // data
-const workSlides = [
+const projectsSlide = [
   [
     {
       title: "Browser Start Page",
@@ -66,7 +66,7 @@ const workSlides = [
   ],
 ];
 
-const WorkSlider = () => {
+const ProjectSlider = () => {
   return (
     <Swiper
       spaceBetween={10}
@@ -79,7 +79,7 @@ const WorkSlider = () => {
       }}
       className="h-[350px] sm:h-[480px] md:max-w-2xl mx-auto"
     >
-      {workSlides.map((slide, slideIndex) => {
+      {projectsSlide.map((slide, slideIndex) => {
         return (
           <SwiperSlide key={slideIndex}>
             <div className="grid grid-cols-2 grid-rows-2 gap-4 cursor-pointer">
@@ -94,4 +94,4 @@ const WorkSlider = () => {
   );
 };
 
-export default WorkSlider;
+export default ProjectSlider;

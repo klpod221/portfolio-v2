@@ -19,7 +19,7 @@ export const navData = [
     icon: <HiRectangleGroup />,
     ariaLabel: "Services",
   },
-  { name: "Work", path: "/work", icon: <HiViewColumns />, ariaLabel: "Work" },
+  { name: "Projects", path: "/projects", icon: <HiViewColumns />, ariaLabel: "Projects" },
   {
     name: "Testimonials",
     path: "/testimonials",

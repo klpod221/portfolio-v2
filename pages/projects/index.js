@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../../utils/animations";
 import projects from "../../const/projects_data";
 
-import WorkSlider from "../../components/WorkSlider";
+import ProjectSlider from "../../components/ProjectSlider";
 import ProjectItem from "../../components/ProjectItem";
 import Bulb from "../../components/Bulb";
 import Circles from "../../components/Circles";
@@ -11,7 +11,7 @@ import MyModal from "../../components/MyModal";
 
 import { BsArrowRight } from "react-icons/bs";
 
-const Work = () => {
+const Projects = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -66,7 +66,7 @@ const Work = () => {
             exit="hidden"
             className="w-full xl:max-w-[65%]"
           >
-            <WorkSlider />
+            <ProjectSlider />
           </motion.div>
         </div>
       </div>
@@ -88,4 +88,4 @@ const Work = () => {
   );
 };
 
-export default Work;
+export default Projects;
